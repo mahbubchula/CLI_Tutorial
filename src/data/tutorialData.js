@@ -54,6 +54,5 @@ export const tutorialSteps = [
     command: "code .",
     expectedOutput: "Opening Visual Studio Code...",
         hint: "Type 'code .'"
-      }
-    ];
-    
+  }
+];

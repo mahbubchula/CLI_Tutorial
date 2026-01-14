@@ -29,13 +29,16 @@ const Terminal = ({ currentStep, onStepComplete }) => {
       const newHistory = [...history, { type: 'command', content: cmd }];
       
       // Process command
-      if (cmd === currentStep.command) {
+      const cleanCmd = cmd.toLowerCase().replace(/\s+/g, ' ').trim();
+      const cleanExpected = currentStep.command.toLowerCase().trim();
+
+      if (cleanCmd === cleanExpected) {
         newHistory.push({ type: 'success', content: currentStep.expectedOutput });
         setHistory(newHistory);
         setInput('');
         setTimeout(() => {
             onStepComplete();
-        }, 1000);
+        }, 1500); // Slightly longer delay to read output
       } else if (cmd === 'clear') {
         setHistory([]);
         setInput('');
